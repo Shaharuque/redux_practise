@@ -1,0 +1,35 @@
+.details-box{
+    border-radius: 10px;
+    border:1px solid gray;
+    box-shadow: 5px 10px rgba(111, 180, 163, 0.808);
+    padding: 20px;
+}
+.details-box h4{
+    margin-bottom: 10px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 0.95rem;
+}
+
+h3{
+    color: rgba(14, 221, 169, 0.808);
+    margin-top: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 10px;
+}
+.details-box button{
+    border-radius: 10px;
+    padding:7px;
+    background-color: rgba(14, 221, 169, 0.808);
+    color: white;
+    margin-top: 5px;
+}
+.details-box button:hover{
+    background-color: black;
+    cursor: pointer;
+}
+
+.social-link{
+    margin-top:40px;
+    display: flex;
+    align-items: center;
+}

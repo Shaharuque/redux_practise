@@ -1,0 +1,8 @@
+.employee-list{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.employee-list li{
+    color: rgb(110, 109, 109);
+}

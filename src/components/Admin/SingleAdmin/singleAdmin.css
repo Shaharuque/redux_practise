@@ -1,0 +1,29 @@
+.admin-list{
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.admin-list li{
+  color:rgb(63, 189, 189)
+}
+
+.details-btn{
+  padding:7px;
+  background-color: rgba(14, 221, 169, 0.808);
+  color:white;
+  border-radius: 10px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.details-btn:hover{
+  background-color: black;
+}
+
+.edit-btn{
+  padding:7px;
+  background-color: rgba(7, 125, 161, 0.986);
+  color:white;
+  border-radius: 10px;
+  margin-left:5px;
+  cursor: pointer;
+}

@@ -1,0 +1,26 @@
+
+.navbar{
+    background-color: teal;
+    height: 40px;
+    color: white;
+}
+.navbar-ul {
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    
+  }
+  
+  .navbar-ul li{
+    margin-left:10px;
+    font-weight: 600;
+    border: 1px solid rgba(0, 162, 255, 0.397);
+    padding: 0 5px;
+    background-color: white;
+    border-radius: 5px;
+  }
+
