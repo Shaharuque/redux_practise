@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import SingleAdmin from './SingleAdmin/SingleAdmin';
 import './admin.css'
+import ReactPaginate from 'react-paginate';
 
-const Admin = ({admins,pageCount_ad,setPage_ad,page_ad}) => {
+const Admin = ({admins,pageCount_ad,setPage_ad}) => {
+
+    const handlePageClick=({selected:selectedPage})=>{
+        console.log('selected page', selectedPage)
+        setPage_ad(selectedPage+1)
+    }
+
     // const [admins, setAdmins] = useState([])
-
     // useEffect(() => {
     //     fetch('https://60f2479f6d44f300177885e6.mockapi.io/users?user_type=admin')
     //         .then(res => res.json())
@@ -20,12 +26,19 @@ const Admin = ({admins,pageCount_ad,setPage_ad,page_ad}) => {
                 }
             </ul>
             <div className='pagination'>
-            {
-                [...Array(pageCount_ad).keys()].map(number => 
-                    <button className={page_ad === number ? 'selected' : ''}
-                    onClick={() => setPage_ad(number+1)}>{number + 1}
-                </button>)
-            }
+            <ReactPaginate
+                    previousLabel={"< Previous"}
+                    nextLabel={"Next >"}
+                    pageCount={pageCount_ad}
+                    marginPagesDisplayed={1}
+                    onPageChange={handlePageClick}
+                    containerClassName={'pagination'}
+                    previousLinkClassName={"pagination_Link"}
+                    nextLinkClassName={"pagination_Link"}
+                    activeClassName={"pagination_Link-active"}
+                    disabledClassName={"pagination_Link-disabled"}
+                >
+            </ReactPaginate>
         </div>
         </div>
     );

@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import SingleEmployee from './SingleEmployee/SingleEmployee';
 import './employee.css'
+import ReactPaginate from 'react-paginate';
 
-const Employee = ({ employees,pageCount,setPage,page }) => {
-    
+const Employee = ({ employees, pageCount, setPage}) => {
+
+    const handlePageClick=({selected:selectedPage})=>{
+        console.log('selected page', selectedPage)
+        setPage(selectedPage+1)
+    }
+
     // const [employees,setEmployee]=useState([])
-
     // useEffect(()=>{
     //     fetch('https://60f2479f6d44f300177885e6.mockapi.io/users?user_type=employee')
     //     .then(res=>res.json())
@@ -22,12 +27,19 @@ const Employee = ({ employees,pageCount,setPage,page }) => {
             </ul>
 
             <div className='pagination'>
-                {
-                    [...Array(pageCount).keys()].map(number => 
-                        <button className={page === number ? 'selected' : ''}
-                        onClick={() => setPage(number+1)}>{number + 1}
-                    </button>)
-                }
+                <ReactPaginate
+                    previousLabel={"< Previous"}
+                    nextLabel={"Next >"}
+                    pageCount={pageCount}
+                    marginPagesDisplayed={1}
+                    onPageChange={handlePageClick}
+                    containerClassName={'pagination'}
+                    previousLinkClassName={"pagination_Link"}
+                    nextLinkClassName={"pagination_Link"}
+                    activeClassName={"pagination_Link-active"}
+                    disabledClassName={"pagination_Link-disabled"}
+                >
+                </ReactPaginate>
             </div>
         </div>
     );

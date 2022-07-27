@@ -1,5 +1,6 @@
 //Custom Tab component
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import Admin from "./Admin/Admin";
 import Employee from "./Employee/Employee";
 import Modal from "./Modal/Modal";
@@ -18,7 +19,7 @@ function Tabs() {
     const [pageCount_ad, setPageCount_ad] = useState(0)
     const [page_ad, setPage_ad] = useState(1)
     //for spinner
-    const [loading,setLoading]=useState(false)
+    const [loading, setLoading] = useState(false)
 
     console.log(page_ad)
     //for employee pagination page count purpose
@@ -72,6 +73,13 @@ function Tabs() {
     //console.log(employees.length)
     return (
         <div style={{ padding: '10px' }}>
+            {/*Fro SEO purpose */}
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Employee And Admin List</title>
+                <meta property="og:description" content="List of employees and admins shows" />
+                <meta property="og:image" content="https://cdni.autocarindia.com/utils/imageresizer.ashx?n=http://cms.haymarketindia.net/model/uploads/modelimages/AMG%20GTModelImage.jpg" />
+            </Helmet>
             <div className="container">
                 <div className="bloc-tabs">
                     <button
@@ -93,23 +101,11 @@ function Tabs() {
                     <div
                         className={toggleState === 1 ? "content  active-content" : "content"}
                     >
-                        {
-                            loading ?
-                            <Spinner></Spinner>
-                            :
-                            <Admin admins={admins} pageCount_ad={pageCount_ad} page_ad={page_ad} setPage_ad={setPage_ad}></Admin>
-                        }
+                        <Admin admins={admins} pageCount_ad={pageCount_ad} page_ad={page_ad} setPage_ad={setPage_ad}></Admin>
                     </div>
 
-                    <div
-                        className={toggleState === 2 ? "content  active-content" : "content"}
-                    >
-                        {
-                            loading ?
-                            <Spinner></Spinner>
-                            :
-                            <Employee employees={employees} pageCount={pageCount} page={page} setPage={setPage}></Employee>
-                        }
+                    <div className={toggleState === 2 ? "content  active-content" : "content"}>
+                        <Employee employees={employees} pageCount={pageCount} page={page} setPage={setPage}></Employee>
                     </div>
                 </div>
             </div>
@@ -120,10 +116,10 @@ function Tabs() {
                     setEmployee={setEmployee}
                     setAdmins={setAdmins}
                     page={page}
-                    page_ad={page_ad} 
+                    page_ad={page_ad}
                     setPageCount={setPageCount}
-                    setPageCount_ad={setPageCount_ad}/>
-                }
+                    setPageCount_ad={setPageCount_ad} />
+            }
         </div>
     );
 }

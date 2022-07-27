@@ -5,6 +5,7 @@ import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
 import './employeeDetails.css'
 import { BsFillCollectionFill } from 'react-icons/bs';
 import Spinner from '../../Spinner/Spinner';
+import { Helmet } from 'react-helmet';
 
 const EmployeeDetails = () => {
     const navigate = useNavigate()
@@ -30,6 +31,13 @@ const EmployeeDetails = () => {
 
     return (
         <div style={{ padding: '20px' }}>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Employee Details share</title>
+                <meta property="og:description" content="Details of employee shared" />
+                <meta property="og:image" content="https://cdni.autocarindia.com/utils/imageresizer.ashx?n=http://cms.haymarketindia.net/model/uploads/modelimages/AMG%20GTModelImage.jpg" />
+            </Helmet>
+
             <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'center' }}>
                 <h3>Employee Details of {details?.first_name} {details?.last_name} <BsFillCollectionFill></BsFillCollectionFill></h3>
             </div>
@@ -44,6 +52,9 @@ const EmployeeDetails = () => {
                             <h4>Division: {details?.division}</h4>
                             <h4>District: {details?.district}</h4>
                             <h4 style={{ textTransform: 'uppercase', color: 'red' }}>USER ROLE: {details?.user_type}</h4>
+                            <div>
+                                <img style={{ width: '25%' }} src='https://www.nicepng.com/png/detail/985-9855352_action-adventure-demoman-fanfiction-giant-heavy-demoman-tf2.png' />
+                            </div>
                             <button onClick={updatePage}>Edit Details</button>
                         </div>
                 }
