@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import { Routes, Route, Link } from "react-router-dom";
-import Tabs from './components/Tabs';
 import EmployeeDetails from './components/Employee/Details/EmployeeDetails';
 import UpdateDetails from './components/Employee/Update/UpdateDetails';
 import { ToastContainer,  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar/Navbar';
+import Tabs from './components/Tab/Tabs';
 
 
 function App() {

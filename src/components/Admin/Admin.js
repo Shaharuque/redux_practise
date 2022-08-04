@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react';
 import SingleAdmin from './SingleAdmin/SingleAdmin';
 import './admin.css'
 import ReactPaginate from 'react-paginate';
+import Pagination from '../Pagination/Pagination';
 
 const Admin = ({admins,pageCount_ad,setPage_ad}) => {
 
-    const handlePageClick=({selected:selectedPage})=>{
-        console.log('selected page', selectedPage)
-        setPage_ad(selectedPage+1)
-    }
+
 
     // const [admins, setAdmins] = useState([])
     // useEffect(() => {
@@ -25,21 +23,8 @@ const Admin = ({admins,pageCount_ad,setPage_ad}) => {
                     admins?.map(admin=><SingleAdmin admin={admin} key={admin.id}></SingleAdmin>)
                 }
             </ul>
-            <div className='pagination'>
-            <ReactPaginate
-                    previousLabel={"< Previous"}
-                    nextLabel={"Next >"}
-                    pageCount={pageCount_ad}
-                    marginPagesDisplayed={1}
-                    onPageChange={handlePageClick}
-                    containerClassName={'pagination'}
-                    previousLinkClassName={"pagination_Link"}
-                    nextLinkClassName={"pagination_Link"}
-                    activeClassName={"pagination_Link-active"}
-                    disabledClassName={"pagination_Link-disabled"}
-                >
-            </ReactPaginate>
-        </div>
+            {/*Pagination component is called */}
+            <Pagination pageCount={pageCount_ad} setPage={setPage_ad}></Pagination>
         </div>
     );
 };
