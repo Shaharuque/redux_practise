@@ -6,24 +6,35 @@ import './employeeDetails.css'
 import { BsFillCollectionFill } from 'react-icons/bs';
 import Spinner from '../../Spinner/Spinner';
 import { Helmet } from 'react-helmet';
+import { useDispatch, useSelector } from "react-redux";
+import { getDetails } from '../../../features/members/memberSlice';
 
 const EmployeeDetails = () => {
     const navigate = useNavigate()
     const { id } = useParams()
-    const [details, setDetails] = useState()
     const [loading, setLoading] = useState(false)
 
 
-    useEffect(() => {
-        setLoading(true)
-        fetch(`https://60f2479f6d44f300177885e6.mockapi.io/users/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                setLoading(false)
-                setDetails(data)
-            })
-    }, [])
+    // useEffect(() => {
+    //     setLoading(true)
+    //     fetch(`https://60f2479f6d44f300177885e6.mockapi.io/users/${id}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setLoading(false)
+    //             setDetails(data)
+    //         })
+    // }, [])
     //console.log(details)
+
+    const dispatch = useDispatch()
+    //useSelector use korey [adminData reducer] extract kora hocchey to get admins data from api
+    const result = useSelector((state) => state.detailsData);
+    const details=result?.details
+    
+     //dispatch async action  
+     useEffect(() => {
+        dispatch(getDetails(id))
+    }, [id]);
 
     const updatePage = () => {
         navigate(`/update_details/${id}`)

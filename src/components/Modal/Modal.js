@@ -9,8 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Form from '../Form/Form';
 
 
-const Modal = ({ setOpenModal, page, setPageCount, page_ad, setPageCount_ad }) => {
-
+const Modal = ({ setOpenModal, page, setPageCount, page_ad, setPageCount_ad,employees }) => {
+    
     const modalHandler = () => {
         setOpenModal(false);
     }
@@ -30,7 +30,7 @@ const Modal = ({ setOpenModal, page, setPageCount, page_ad, setPageCount_ad }) =
                     <h3>Put Information's to add new user</h3>
                 </div>
                 {/*Form component called */}
-                <Form page={page} setPageCount={setPageCount} page_ad={page_ad} setPageCount_ad={setPageCount_ad} id={null}></Form>
+                <Form employees={employees} page={page} setPageCount={setPageCount} page_ad={page_ad} setPageCount_ad={setPageCount_ad} id={null}></Form>
             </div>
         </div>
     );

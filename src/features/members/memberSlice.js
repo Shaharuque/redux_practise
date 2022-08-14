@@ -11,6 +11,7 @@ const initialState = {
   loading: false,
   admins: [],
   employees:[],
+  details:{},
   error: ''
 }
 
@@ -77,3 +78,38 @@ const employeeSlice = createSlice({
 })
 
 export const employeeDataReducer = employeeSlice.reducer; //sliceName.reducer
+
+//------------------------------//
+//employee details
+export const getDetails = createAsyncThunk("employees/getDetails", async (id) => {
+  const response = await axios.get(`https://60f2479f6d44f300177885e6.mockapi.io/users/${id}`);
+  return response.data;
+});
+
+
+const detailsSlice = createSlice({
+  name: 'employees_details',
+  initialState,
+  reducers: {
+    
+  },
+  //async action creator
+  extraReducers: (builder) => {
+    builder.addCase(getDetails.pending, (state) => {
+      state.loading = true;
+      state.error = {};
+    });
+    builder.addCase(getDetails.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = {};
+      state.details = action.payload;
+    });
+    builder.addCase(getDetails.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error;
+      state.details = "";
+    });
+  },
+})
+
+export const detailsReducer = detailsSlice.reducer; //sliceName.reducer

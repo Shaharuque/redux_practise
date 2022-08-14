@@ -4,7 +4,13 @@
 }
 
 .admin-list li{
-  color:rgb(63, 189, 189)
+    color:rgb(233, 211, 15);
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: black 0px 5px 15px;
+    margin-bottom: 10px;
+    background-color: black;
+    
 }
 
 .details-btn{
@@ -14,6 +20,7 @@
   border-radius: 10px;
   margin-left: 20px;
   cursor: pointer;
+  height:30px;
 }
 .details-btn:hover{
   background-color: black;

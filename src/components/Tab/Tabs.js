@@ -21,18 +21,27 @@ function Tabs() {
     const [page_ad, setPage_ad] = useState(1)
     //for spinner
     const [loading, setLoading] = useState(false)
-
+    const [merged,setMerged]=useState([])
     //redux-toolkit
     const dispatch = useDispatch()
-
+    
     //useSelector use korey [adminData reducer] extract kora hocchey to get admins data from api
     const result_admin = useSelector((state) => state.adminData);
     const admins = result_admin.admins;
     //useSelector use korey [employeeData reducer] extract kora hocchey to get employees data from api
     const result_employee = useSelector(state => state.employeeData)
     const employees = result_employee.employees
-    //console.log(employees)
 
+    // useEffect(()=>{
+    //     setMerged(employees)
+    // },[merged])
+    
+    //console.log(result_employee)
+   
+    // const localData=localStorage.getItem('data')
+    // const final=[JSON.parse(localData)]
+
+    // const merged=([...final,...employees])
 
     //for employee pagination page count purpose
     useEffect(() => {
@@ -116,7 +125,8 @@ function Tabs() {
                     page={page}
                     page_ad={page_ad}
                     setPageCount={setPageCount}
-                    setPageCount_ad={setPageCount_ad} />
+                    setPageCount_ad={setPageCount_ad} 
+                    employees={employees}/>
             } 
         </div>
     );
